@@ -1,0 +1,77 @@
+import { AvatarContext } from "@/context/AvatarContext";
+import { local } from "@/helpers/storage";
+import { useContext } from "react";
+import bart from "/bart.webp";
+import homer from "/homer.webp";
+import lisa from "/lisa.webp";
+import maggie from "/maggie.webp";
+import marge from "/marge.webp";
+import perro from "/perro.webp";
+
+const avatars = [
+    { name: "homer", src: homer },
+    { name: "marge", src: marge },
+    { name: "bart", src: bart },
+    { name: "lisa", src: lisa },
+    { name: "maggie", src: maggie },
+    { name: "perro", src: perro },
+];
+
+export const AvatarGrid = () => {
+    const { selectedAvatar, setSelectedAvatar } = useContext(AvatarContext);
+    return (
+        <section className="flex flex-col gap-1 text-center">
+            <p className="text-login">Elige tu imagen de avatar</p>
+
+            <div className="grid grid-cols-2 gap-2">
+                {avatars.map(({ name, src }) => (
+                    <button
+                        key={name}
+                        type="button"
+                        aria-label={`Elegir avatar de ${name}`}
+                        aria-pressed={selectedAvatar === name}
+                        onClick={() => {
+                            setSelectedAvatar(name);
+                            local.save("avatar", name);
+                        }}
+                        className={`p-1 rounded-full transition-all duration-150 active:scale-95 focus:outline-none ${
+                            selectedAvatar === name ? "rotating-border" : ""
+                        }`}
+                    >
+                        {selectedAvatar === name && (
+                            <svg viewBox="0 0 100 100">
+                                <defs>
+                                    <linearGradient id="gradient-base" x1="0%" y1="0%" x2="100%" y2="0%">
+                                        <stop offset="0%" stopColor="#ff49c9" />
+                                        <stop offset="100%" stopColor="#ff77e3" />
+                                    </linearGradient>
+                                    <linearGradient id="gradient-shine" x1="0%" y1="0%" x2="100%" y2="0%">
+                                        <stop offset="0%" stopColor="transparent" />
+                                        <stop offset="50%" stopColor="#ffffff" />
+                                        <stop offset="100%" stopColor="transparent" />
+                                    </linearGradient>
+                                </defs>
+                                <circle
+                                    className="arc-base"
+                                    cx="50"
+                                    cy="50"
+                                    r="40"
+                                    pathLength="251"
+                                    strokeDasharray="80 171"
+                                />
+                                <circle className="arc-shine" cx="50" cy="50" r="40" pathLength="251" />
+                            </svg>
+                        )}
+                        <div className="avatar-container">
+                            <img
+                                src={src}
+                                alt={`${name} avatar`}
+                                className="w-24 rounded-full active:scale-95 transition-transform duration-150"
+                            />
+                        </div>
+                    </button>
+                ))}
+            </div>
+        </section>
+    );
+};

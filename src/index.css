@@ -1,0 +1,62 @@
+@import "tailwindcss";
+
+@keyframes rotate-border {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes move-white {
+    0% {
+        stroke-dashoffset: 0;
+    }
+    100% {
+        stroke-dashoffset: -251;
+    }
+}
+
+.rotating-border {
+    position: relative;
+    padding: 4px;
+    border-radius: 50%;
+}
+
+.rotating-border svg {
+    position: absolute;
+    inset: -6px;
+    width: calc(100% + 12px);
+    height: calc(100% + 12px);
+    animation: rotate-border 2s linear infinite;
+}
+
+.rotating-border .arc-base {
+    fill: none;
+    stroke: url(#gradient-base);
+    stroke-width: 8;
+    stroke-linecap: round;
+}
+
+.rotating-border .arc-shine {
+    fill: none;
+    stroke: url(#gradient-shine);
+    stroke-width: 8;
+    stroke-linecap: round;
+    stroke-dasharray: 30 221;
+    animation: move-white 1.5s linear infinite;
+}
+
+.avatar-container {
+    position: relative;
+    border-radius: 50%;
+}
+
+.title {
+    @apply text-gray-200 font-bold text-2xl;
+}
+
+.text-login {
+    @apply font-bold text-gray-200;
+}

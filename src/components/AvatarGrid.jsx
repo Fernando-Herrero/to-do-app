@@ -1,5 +1,4 @@
-import { AvatarContext } from "@/context/AvatarContext";
-import { local } from "@/helpers/storage";
+import { AuthContext } from "@/context/AuthContext";
 import { useContext } from "react";
 import bart from "/bart.webp";
 import homer from "/homer.webp";
@@ -18,7 +17,8 @@ const avatars = [
 ];
 
 export const AvatarGrid = () => {
-    const { selectedAvatar, setSelectedAvatar } = useContext(AvatarContext);
+    const { user, updateUser } = useContext(AuthContext);
+
     return (
         <section className="flex flex-col gap-1 text-center">
             <p className="text-login">Elige tu imagen de avatar</p>
@@ -29,16 +29,13 @@ export const AvatarGrid = () => {
                         key={name}
                         type="button"
                         aria-label={`Elegir avatar de ${name}`}
-                        aria-pressed={selectedAvatar === name}
-                        onClick={() => {
-                            setSelectedAvatar(name);
-                            local.save("avatar", name);
-                        }}
+                        aria-pressed={user.avatar === name}
+                        onClick={() => updateUser({ avatar: name })}
                         className={`p-1 rounded-full transition-all duration-150 active:scale-95 focus:outline-none ${
-                            selectedAvatar === name ? "rotating-border" : ""
+                            user.avatar === name ? "rotating-border" : ""
                         }`}
                     >
-                        {selectedAvatar === name && (
+                        {user.avatar === name && (
                             <svg viewBox="0 0 100 100">
                                 <defs>
                                     <linearGradient id="gradient-base" x1="0%" y1="0%" x2="100%" y2="0%">

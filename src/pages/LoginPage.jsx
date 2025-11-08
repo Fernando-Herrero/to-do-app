@@ -1,8 +1,9 @@
 import { AvatarGrid } from "@/components/AvatarGrid";
-import { useState } from "react";
+import { AuthContext } from "@/context/AuthContext";
+import { useContext } from "react";
 
 export const LoginPage = () => {
-    const [name, setName] = useState("");
+    const { user, updateUser } = useContext(AuthContext);
 
     return (
         <div className="h-screen flex flex-col items-center justify-center gap-6 p-2 bg-gray-800">
@@ -16,8 +17,8 @@ export const LoginPage = () => {
                 <input
                     className="border border-gray-600 rounded p-1"
                     type="text"
-                    value={name}
-                    onChange={(event) => setName(event.target.value)}
+                    value={user.name}
+                    onChange={(event) => updateUser({ name: event.target.value })}
                     placeholder="Escribe tu nombre"
                 />
             </label>

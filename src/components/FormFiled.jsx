@@ -7,8 +7,7 @@ export const FormField = () => {
 
     const handleInput = ({ target: { name, value } }) => {
         setError(null);
-        const sanitizedValue = value.trim();
-        updateUser({ [name]: sanitizedValue });
+        updateUser({ [name]: value });
     };
 
     const handleSubmit = (event) => {
@@ -64,7 +63,7 @@ export const FormField = () => {
             <button
                 type="submit"
                 disabled={isLoading}
-                className="bg-gray-200 rounded max-w-1/2 self-center py-1 px-4 transition-all duration-300 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-300"
+                className="bg-gray-800 dark:bg-gray-200 text-gray-100 dark:text-gray-800 rounded max-w-1/2 self-center py-1 px-4 transition-all duration-300 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed"
             >
                 {isLoading ? "Cargando..." : "Entrar"}
             </button>

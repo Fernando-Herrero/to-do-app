@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
 
 @keyframes rotate-border {
     0% {
@@ -53,10 +54,26 @@
     border-radius: 50%;
 }
 
+.bg-main {
+    @apply bg-gray-100;
+}
+
+.dark .bg-main {
+    @apply bg-gray-800;
+}
+
 .title {
-    @apply text-gray-200 font-bold text-3xl;
+    @apply text-black font-bold text-3xl;
+}
+
+.dark .title {
+    @apply text-gray-200;
 }
 
 .text-login {
-    @apply font-bold text-gray-200;
+    @apply text-black font-bold;
+}
+
+.dark .text-login {
+    @apply text-gray-200;
 }

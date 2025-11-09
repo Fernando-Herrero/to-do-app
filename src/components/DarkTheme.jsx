@@ -1,4 +1,4 @@
-import moon from "@/assets/icons/moon-ico.svg";
+import moon from "@/assets/icons/moon-icon.svg";
 import sun from "@/assets/icons/sun-icon.svg";
 import { local } from "@/helpers/storage";
 import classNames from "classnames";

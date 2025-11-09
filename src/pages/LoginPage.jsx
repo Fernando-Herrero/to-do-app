@@ -4,7 +4,7 @@ import { FormField } from "@/components/FormFiled";
 
 export const LoginPage = () => {
     return (
-        <div className="h-screen flex flex-col items-center justify-center gap-6 p-2 bg-gray-800">
+        <div className="h-screen flex flex-col items-center justify-center gap-6 p-2 bg-main">
             <DarkTheme />
 
             <div className="text-center">

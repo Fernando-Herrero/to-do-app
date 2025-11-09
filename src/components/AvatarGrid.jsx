@@ -23,7 +23,7 @@ export const AvatarGrid = () => {
         <section className="flex flex-col gap-1 text-center">
             <p className="text-login">Elige tu imagen de avatar</p>
 
-            <div className="grid grid-cols-2 gap-2">
+            <div className="grid grid-cols-2 justify-items-center gap-1">
                 {avatars.map(({ name, src }) => (
                     <button
                         key={name}
@@ -63,7 +63,7 @@ export const AvatarGrid = () => {
                             <img
                                 src={src}
                                 alt={`${name} avatar`}
-                                className="w-24 rounded-full active:scale-95 transition-transform duration-150"
+                                className="w-14 rounded-full active:scale-95 transition-transform duration-150"
                             />
                         </div>
                     </button>

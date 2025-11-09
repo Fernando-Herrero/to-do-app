@@ -1,0 +1,13 @@
+export const InputField = ({ label, type = "text", name, value, onChange, placeholder }) => (
+    <label className="flex flex-col gap-1 text-gray-300">
+        <span className="text-login">{label}</span>
+        <input
+            className="border border-gray-600 rounded p-1"
+            type={type}
+            name={name}
+            value={value}
+            onChange={onChange}
+            placeholder={placeholder}
+        />
+    </label>
+);

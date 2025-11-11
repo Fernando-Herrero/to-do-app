@@ -39,7 +39,7 @@ export const FormField = () => {
     return (
         <form className="flex flex-col gap-2 w-full max-w-[80vw]" onSubmit={handleSubmit}>
             {error && (
-                <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-2 rounded text-sm">
+                <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-2 rounded text-sm text-center">
                     {error}
                 </div>
             )}
